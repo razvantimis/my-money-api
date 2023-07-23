@@ -10,7 +10,8 @@
     ],
     "types": [
       "jest",
-      "@cloudflare/workers-types"
+      "@cloudflare/workers-types",
+      "jest-environment-miniflare/globals"
     ]
   },
 }
