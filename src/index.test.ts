@@ -7,3 +7,4 @@ describe('Test the application', () => {
     expect(res.status).toBe(200)
   })
 })
+
