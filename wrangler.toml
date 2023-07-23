@@ -1,3 +1,5 @@
 name = "my-money-api"
 compatibility_date = "2023-01-01"
 send_metrics = false
+main="src/index.ts"
+account_id = "11d57fc90d69f90b74b10ec0e285ab97"
