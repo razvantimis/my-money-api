@@ -11,8 +11,13 @@ jobs:
     name: Deploy
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Publish
-        uses: cloudflare/wrangler-action@2.0.0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install deps
+        run: npm ci
+
+      - name: Deploy
+        run: npm run deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }} 
