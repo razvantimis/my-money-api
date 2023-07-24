@@ -19,7 +19,7 @@ jobs:
 
       - name: Deploy
         run: |
-          npm run deploy
           echo $CLOUDFLARE_API_TOKEN
+          npm run deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }} 
