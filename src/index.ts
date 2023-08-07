@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
 import { getDividends } from "./features/dividends";
+import { fetchFlexStatmentData } from "./features/interactiveBrokersApi";
 
 type Bindings = {
   INTERACTIVE_BROKERS_FLEX_DIVIDENDS_QUERY_ID: string;
@@ -12,10 +13,11 @@ type MyEnv = {
 const app = new Hono<MyEnv>();
 
 app.get("/dividends", async (c) => {
-  const dividens = await getDividends(
+  const dividens = await getDividends(fetchFlexStatmentData)(
     c.env.INTERACTIVE_BROKERS_FLEX_WEB_TOKEN,
     c.env.INTERACTIVE_BROKERS_FLEX_DIVIDENDS_QUERY_ID
   );
+  console.log(dividens);
 
   return c.json(dividens);
 });
