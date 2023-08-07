@@ -1,15 +1,5 @@
 import { XMLParser } from "fast-xml-parser";
 
-export type IBKRDividend = {
-  "@accountId": string;
-  "@symbol": string;
-  "@exDate": string;
-  "@payDate": string;
-  "@fee": string;
-  "@netAmount": string;
-  "#text"?: null | string;
-};
-
 const parserXml = new XMLParser({
   ignoreAttributes: false,
   attributeNamePrefix: "@",
@@ -43,7 +33,7 @@ export async function getReferenceCodeFromFlexService(
 export async function fetchFlexStatmentData(
   token: string,
   flexQueryId: string
-): Promise<IBKRDividend[]> {
+): Promise<string> {
   const referenceCode = await getReferenceCodeFromFlexService(
     token,
     flexQueryId
@@ -51,12 +41,6 @@ export async function fetchFlexStatmentData(
   const url = `https://www.interactivebrokers.com/Universal/servlet/FlexStatementService.GetStatement?q=${referenceCode}&t=${token}&v=3`;
   const response = await fetch(url);
   const xmlData = await response.text();
-  const jsonData = parserXml.parse(xmlData);
-
-  if (!jsonData.FlexQueryResponse?.FlexStatements) {
-    throw new Error("Failed to fetch dividens data");
-  }
-  const statmentData = jsonData.FlexQueryResponse.FlexStatements.FlexStatement;
-  return statmentData.OpenDividendAccruals
-    .OpenDividendAccrual as IBKRDividend[];
+  return xmlData;
+  
 }
