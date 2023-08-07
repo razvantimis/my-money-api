@@ -8,6 +8,7 @@ const parserXml = new XMLParser({
 export type IBKRDividend = {
   "@accountId": string;
   "@symbol": string;
+  "@date": string;
   "@exDate": string;
   "@payDate": string;
   "@currency": string;
@@ -17,6 +18,8 @@ export type IBKRDividend = {
   "@reportDate": string;
   "@netAmount": string;
   "@grossAmount": string;
+  "@grossRate": string;
+  "@tax": string;
 };
 
 const parseDividends = (xmlData: string) => {

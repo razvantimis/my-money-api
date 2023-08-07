@@ -140,6 +140,36 @@
           tax="0.5" fee="0" grossRate="5" grossAmount="5" netAmount="4.5" code="" fromAcct=""
           toAcct="" actionID="119412165" levelOfDetail="SUMMARY" serialNumber="" deliveryType=""
           commodityType="" fineness="0.0" weight="0.0 ()" />
+        <ChangeInDividendAccrual accountId="-" acctAlias="-" model="" currency="USD"
+          fxRateToBase="1" assetCategory="STK" subCategory="COMMON" symbol="PEP"
+          description="PEPSICO INC" conid="11017" securityID="US7134481081" securityIDType="ISIN"
+          cusip="713448108" isin="US7134481081" figi="" listingExchange="NASDAQ" underlyingConid=""
+          underlyingSymbol="" underlyingSecurityID="" underlyingListingExchange="" issuer=""
+          multiplier="1" strike="" expiry="" putCall="" principalAdjustFactor=""
+          reportDate="20230601" date="20230531" exDate="20230601" payDate="20230630" quantity="12"
+          tax="1.52" fee="0" grossRate="1.265" grossAmount="15.19" netAmount="13.67" code=""
+          fromAcct="" toAcct="" actionID="117559103" levelOfDetail="SUMMARY" serialNumber=""
+          deliveryType="" commodityType="" fineness="0.0" weight="0.0 ()" />
+        <ChangeInDividendAccrual accountId="-" acctAlias="-" model="" currency="USD"
+          fxRateToBase="1" assetCategory="STK" subCategory="COMMON" symbol="PEP"
+          description="PEPSICO INC" conid="11017" securityID="US7134481081" securityIDType="ISIN"
+          cusip="713448108" isin="US7134481081" figi="" listingExchange="NASDAQ" underlyingConid=""
+          underlyingSymbol="" underlyingSecurityID="" underlyingListingExchange="" issuer=""
+          multiplier="1" strike="" expiry="" putCall="" principalAdjustFactor=""
+          reportDate="20230602" date="20230531" exDate="20230601" payDate="20230630" quantity="24"
+          tax="0" fee="0" grossRate="1.265" grossAmount="-0.01" netAmount="-0.01" code=""
+          fromAcct="" toAcct="" actionID="117559103" levelOfDetail="SUMMARY" serialNumber=""
+          deliveryType="" commodityType="" fineness="0.0" weight="0.0 ()" />
+        <ChangeInDividendAccrual accountId="-" acctAlias="-" model="" currency="USD"
+          fxRateToBase="1" assetCategory="STK" subCategory="COMMON" symbol="PEP"
+          description="PEPSICO INC" conid="11017" securityID="US7134481081" securityIDType="ISIN"
+          cusip="713448108" isin="US7134481081" figi="" listingExchange="NASDAQ" underlyingConid=""
+          underlyingSymbol="" underlyingSecurityID="" underlyingListingExchange="" issuer=""
+          multiplier="1" strike="" expiry="" putCall="" principalAdjustFactor=""
+          reportDate="20230630" date="20230630" exDate="20230601" payDate="20230630" quantity="12"
+          tax="-1.52" fee="0" grossRate="1.265" grossAmount="-15.18" netAmount="-13.66" code=""
+          fromAcct="" toAcct="" actionID="117559103" levelOfDetail="SUMMARY" serialNumber=""
+          deliveryType="" commodityType="" fineness="0.0" weight="0.0 ()" />
       </ChangeInDividendAccruals>
     </FlexStatement>
   </FlexStatements>
