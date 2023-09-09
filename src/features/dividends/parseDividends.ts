@@ -24,7 +24,10 @@ export type IBKRDividend = {
 
 const parseDividends = (xmlData: string) => {
   const jsonData = parserXml.parse(xmlData);
-
+  
+  if(jsonData.FlexStatementResponse?.Status === "Warn"){
+    throw new Error(jsonData.FlexStatementResponse.ErrorMessage);
+  }
   if (!jsonData.FlexQueryResponse?.FlexStatements) {
     throw new Error("Failed to fetch flex statement data");
   }

@@ -15,21 +15,25 @@ type MyEnv = {
 };
 const app = new Hono<MyEnv>();
 
-app.use("*", (...params) =>{
+app.use("*", (...params) => {
   return basicAuth({
     username: params[0].env.AUHT_BASIC_USERNAME,
     password: params[0].env.AUTH_BASIC_PASSWORD,
-  })(...params)
+  })(...params);
 });
 
 app.get("/dividends", async (c) => {
-  const dividens = await getDividends({
-    fetchStatmentData: fetchFlexStatmentData,
-  })(
-    c.env.INTERACTIVE_BROKERS_FLEX_WEB_TOKEN,
-    c.env.INTERACTIVE_BROKERS_FLEX_DIVIDENDS_QUERY_ID
-  );
-  return c.json(dividens);
+  try {
+    const dividens = await getDividends({
+      fetchStatmentData: fetchFlexStatmentData,
+    })(
+      c.env.INTERACTIVE_BROKERS_FLEX_WEB_TOKEN,
+      c.env.INTERACTIVE_BROKERS_FLEX_DIVIDENDS_QUERY_ID
+    );
+    return c.json(dividens);
+  } catch (e) {
+    throw new HTTPException(500, { message: (e as Error).message });
+  }
 });
 
 app.notFound(() => {
