@@ -75,5 +75,8 @@ export const getDividends =
       };
       resultDividends.push(myDividend);
     }
-    return resultDividends;
+    const sortedDividends = resultDividends.sort((a, b) => a.payDate.getTime() - b.payDate.getTime());
+
+
+    return sortedDividends;
   };
