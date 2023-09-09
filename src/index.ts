@@ -22,14 +22,6 @@ app.use("*", (...params) =>{
   })(...params)
 });
 
-// app.use(
-//   "*",
-//   basicAuth({
-//     username: "razvant",
-//     password: "razvant",
-//   })
-// );
-
 app.get("/dividends", async (c) => {
   const dividens = await getDividends({
     fetchStatmentData: fetchFlexStatmentData,
