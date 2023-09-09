@@ -16,7 +16,6 @@ describe("Dividends feature", () => {
 
     expect(dividends).toEqual([
       {
-        date: new Date("2023-02-16T00:00:00.000Z"),
         exDate: new Date("2023-02-10T00:00:00.000Z"),
         payDate: new Date("2023-02-16T00:00:00.000Z"),
         symbol: "AAPL",
@@ -32,7 +31,6 @@ describe("Dividends feature", () => {
         description: "APPLE INC",
       },
       {
-        date: new Date("2023-03-06T00:00:00.000Z"),
         exDate: new Date("2023-02-16T00:00:00.000Z"),
         payDate: new Date("2023-03-06T00:00:00.000Z"),
         symbol: "ATO",
@@ -48,7 +46,6 @@ describe("Dividends feature", () => {
         description: "ATMOS ENERGY CORP",
       },
       {
-        date: new Date("2023-06-05T00:00:00.000Z"),
         exDate: new Date("2023-05-19T00:00:00.000Z"),
         payDate: new Date("2023-06-05T00:00:00.000Z"),
         symbol: "ATO",
@@ -64,7 +61,6 @@ describe("Dividends feature", () => {
         description: "ATMOS ENERGY CORP",
       },
       {
-        date: new Date("2023-03-31T00:00:00.000Z"),
         exDate: new Date("2023-03-21T00:00:00.000Z"),
         payDate: new Date("2023-03-31T00:00:00.000Z"),
         symbol: "AVGO",
@@ -80,7 +76,6 @@ describe("Dividends feature", () => {
         description: "BROADCOM INC",
       },
       {
-        date: new Date("2023-06-30T00:00:00.000Z"),
         exDate: new Date("2023-06-21T00:00:00.000Z"),
         payDate: new Date("2023-06-30T00:00:00.000Z"),
         symbol: "AVGO",
@@ -96,7 +91,6 @@ describe("Dividends feature", () => {
         description: "BROADCOM INC",
       },
       {
-        date: new Date("2023-03-23T00:00:00.000Z"),
         exDate: new Date("2023-03-06T00:00:00.000Z"),
         payDate: new Date("2023-03-23T00:00:00.000Z"),
         symbol: "BLK",
@@ -112,7 +106,6 @@ describe("Dividends feature", () => {
         description: "BLACKROCK INC",
       },
       {
-        date: new Date("2023-06-30T00:00:00.000Z"),
         exDate: new Date("2023-06-01T00:00:00.000Z"),
         payDate: new Date("2023-06-30T00:00:00.000Z"),
         symbol: "PEP",

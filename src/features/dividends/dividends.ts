@@ -26,7 +26,7 @@ type MyDividend = {
   netAmount: number;
 };
 
-function getUUID(dividend: Pick<MyDividend, "payDate" | "symbol" | "exchangeCode" | "account">) {
+export function getUUID(dividend: Pick<MyDividend, "payDate" | "symbol" | "exchangeCode" | "account">) {
   return `${format(dividend.payDate, 'yyyy-MM-dd')}#${dividend.symbol}#${dividend.exchangeCode}#${dividend.account}`;
 }
 

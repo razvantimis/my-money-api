@@ -25,12 +25,16 @@ export type IBKRDividend = {
 const parseDividends = (xmlData: string) => {
   const jsonData = parserXml.parse(xmlData);
   
-  if(jsonData.FlexStatementResponse?.Status === "Warn"){
+  console.log(jsonData);
+
+  if(jsonData?.FlexStatementResponse?.Status && jsonData?.FlexStatementResponse?.Status !== "Success"){
     throw new Error(jsonData.FlexStatementResponse.ErrorMessage);
   }
   if (!jsonData.FlexQueryResponse?.FlexStatements) {
     throw new Error("Failed to fetch flex statement data");
   }
+
+  console.log(jsonData.FlexQueryResponse.FlexStatements)
   const statmentData = jsonData.FlexQueryResponse.FlexStatements.FlexStatement;
   return statmentData.ChangeInDividendAccruals
     .ChangeInDividendAccrual as IBKRDividend[];
