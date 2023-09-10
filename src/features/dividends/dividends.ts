@@ -24,6 +24,9 @@ type MyDividend = {
   grossAmount: number;
   /** Calculated by adding the tax and fee amounts and then subtracting it from the gross amount. */
   netAmount: number;
+  isin: string;
+  listingExchange: string;
+  figi: string;
 };
 
 export function getUUID(dividend: Pick<MyDividend, "payDate" | "symbol" | "exchangeCode" | "account">) {
@@ -35,7 +38,6 @@ type ExternalApi = {
 };
 const exchangeCode = "US";
 const account = "INTERACTIVE_BROKERS";
-const currency = "USD";
 
 export const getDividends =
   ({ fetchStatmentData }: ExternalApi) =>
@@ -43,39 +45,46 @@ export const getDividends =
     const xmlData = await fetchStatmentData(token, flexQueryId);
     const dividends = parseDividends(xmlData);
 
-    const resultDividends: MyDividend[] = [];
+    const resultDividends: { [key: string]: MyDividend } = {};
  
     for (const dividend of dividends) {
       // avoid duplicate dividends
-      if (dividend["@date"] !== dividend["@payDate"]) {
+      if (dividend["@code"] !== "Po") {
         continue;
+      }
+      if(!dividend['@payDate']){
+         continue;
       }
       const exDate = parse(dividend["@exDate"], "yyyyMMdd", new Date());
       const payDate = parse(dividend["@payDate"], "yyyyMMdd", new Date());
+      const uuid = getUUID({
+        payDate,
+        symbol: dividend["@symbol"],
+        exchangeCode,
+        account,
+      })
       const myDividend: MyDividend = {
-        uuid: getUUID({
-          payDate,
-          symbol: dividend["@symbol"],
-          exchangeCode,
-          account,
-        }),
+        uuid ,
         exDate: zonedTimeToUtc(exDate, "UTC"),
         payDate: zonedTimeToUtc(payDate, "UTC"),
         symbol: dividend["@symbol"],
         netAmount: Math.abs(parseFloat(dividend["@netAmount"])),
         grossAmount: Math.abs(parseFloat(dividend["@grossAmount"])),
         fee: parseFloat(dividend["@fee"]),
-        currency,
+        currency: dividend["@currency"],
         quantity: parseFloat(dividend["@quantity"]),
         grossRate: parseFloat(dividend["@grossRate"]),
         account,
         exchangeCode,
         tax: Math.abs(parseFloat(dividend["@tax"])),
         description: dividend["@description"],
+        isin: dividend["@isin"],
+        listingExchange: dividend["@listingExchange"],
+        figi: dividend["@figi"],
       };
-      resultDividends.push(myDividend);
+      resultDividends[uuid]= myDividend;
     }
-    const sortedDividends = resultDividends.sort((a, b) => a.payDate.getTime() - b.payDate.getTime());
+    const sortedDividends = Object.values(resultDividends).sort((a, b) => a.payDate.getTime() - b.payDate.getTime());
 
 
     return sortedDividends;
